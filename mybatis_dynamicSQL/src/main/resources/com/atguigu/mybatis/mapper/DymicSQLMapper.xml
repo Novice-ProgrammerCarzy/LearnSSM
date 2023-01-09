@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.atguigu.mybatis.mapper.DymicSQLMapper">
+
+    <!--    List<Emp> getEmpByCondition(Emp emp);     -->
+    <select id="getEmpByCondition" resultType="Emp">
+        select * from t_emp
+        <where>
+            <if test="empName != null and empName != ''">
+                and emp_name = #{empName}
+            </if>
+            <if test="age != null and age != ''">
+                and age = #{age}
+            </if>
+            <if test="gender != null and gender != ''">
+                and gender = #{gender}
+            </if>
+        </where>
+    </select>
+
+    <!--  void insertMoreEmp(@Param("emps") List<Emp> emps);  -->
+    <insert id="insertMoreEmp">
+        insert into t_emp values
+        <foreach collection="emps" item="emp" separator="," >
+            (null,#{emp.empName},#{emp.age},#{emp.gender},null)
+        </foreach>
+    </insert>
+
+
+    <select id="getEmpListByMoreTJ" resultType="Emp">
+        select * from t_emp
+        <choose>
+            <when test="条件1">
+                条件满足后，拼接的sql语句
+            </when>
+            <when test="条件2">
+                可以写多个when，但是只会执行最先满足的
+            </when>
+            <otherwise>
+                等同于java中的 else
+            </otherwise>
+        </choose>
+    </select>
+
+</mapper>

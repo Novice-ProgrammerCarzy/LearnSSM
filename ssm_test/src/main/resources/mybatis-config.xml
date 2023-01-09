@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration
+        PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+    <!--
+         MyBatis核心配置文件中，标签的顺序：
+         properties属性,settings设置,typeAliases类型别名,typeHandlers类型处理程序,
+         objectFactory对象工厂,objectWrapperFactory对象包装器工厂,reflectorFactory反射器工厂,
+         plugins插件,environments环境,databaseIdProvider数据库Id提供程序,mappers映射器
+     -->
+
+    <settings>
+        <!--    将下划线映射为驼峰    -->
+        <setting name="mapUnderscoreToCamelCase" value="true"/>
+    </settings>
+
+
+</configuration>
